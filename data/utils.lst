@@ -6,5 +6,9 @@ pavucontrol
 polkit
 polkit-qt5
 polkit-gnome
+scrot
 xclip
+xautolock
+xbacklight
 betterlockscreen
+fastfetch
