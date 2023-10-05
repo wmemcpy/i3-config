@@ -40,7 +40,13 @@ function install_lst {
 
         # Install the package
         echo_log "installing $line"
-        $1 -S --noconfirm --needed "$line"
+        # if the package manage isnt pacman, then dont use sudo
+        if [ "$1" == "pacman" ]
+        then
+            sudo $1 -S --noconfirm --needed $line
+        else
+            $1 -S --noconfirm --needed $line
+        fi
     done < "$2"
 }
 
