@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# abort on errors
 set -e
 
 if [ "$1" == "-v" ] || [ "$1" == "--verbose" ]; then
@@ -17,6 +16,7 @@ do
 done
 
 function main {
+    init_log_file
     install_dependencies
     install_yay
     install_i3wm
