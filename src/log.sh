@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export -f echo_log
-
 function init_log_file {
     if [ ! -d "../log" ]; then
         mkdir ../log
@@ -17,6 +15,8 @@ function init_log_file {
     echo "$log_file"
 }
 
+export -f init_log_file
+
 function echo_log {
     local log_msg="[`date '+%Y-%m-%d %H:%M:%S'`]: $1"
     local log_file=$(init_log_file)
@@ -24,3 +24,5 @@ function echo_log {
     echo "$log_msg" >> "$log_file"
     echo "$log_msg"
 }
+
+export -f echo_log
