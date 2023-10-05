@@ -1,5 +1,7 @@
-source log.sh
-source setup.sh
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$DIR/src/log.sh"
+source "$DIR/src/setup.sh"
 
 # Installs git and base-devel dependencies and updates the system.
 function install_dependencies {
