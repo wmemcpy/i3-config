@@ -1,6 +1,6 @@
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+#!/usr/bin/env bash
 
-source "$DIR/src/log.sh"
+source ../src/log.sh
 
 function install_lst {
     if [ $# -ne 2 ]
