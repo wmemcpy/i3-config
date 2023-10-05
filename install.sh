@@ -8,10 +8,10 @@ if [ "$EUID" -ne 0 ]
     exit 1
 fi
 
-source ./src/log.sh
-source ./src/setup.sh
-source ./src/install_lst.sh
-source ./src/screens.sh
+source "src/log.sh"
+source "src/setup.sh"
+source "src/install_lst.sh"
+source "src/screens.sh"
 
 function main {
     install_dependencies
@@ -28,3 +28,10 @@ function main {
         setxkbmap fr
     fi
 }
+
+echo "Do you want to install the script? (y/n)"
+read answer
+
+if [ "$answer" != "${answer#[Yy]}" ] ;then
+    main $1
+fi

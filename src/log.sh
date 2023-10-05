@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+export -f init_log_file
+export -f echo_log
+
 function init_log_file {
     if [ ! -d "../log" ]; then
         mkdir ../log
