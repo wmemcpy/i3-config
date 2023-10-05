@@ -7,6 +7,8 @@ source "$DIR/log.sh"
 
 # Installs git and base-devel dependencies and updates the system.
 function install_dependencies {
+    echo "Installing dependencies..."
+    read -p "Press enter to continue"
     echo_log "installing git and base-devel"
     sudo pacman -S --noconfirm --needed git base-devel
     echo_log "updating system"
