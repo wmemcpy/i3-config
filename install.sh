@@ -25,4 +25,8 @@ function main {
     configure_i3wm
 
     script_screen_generate
+
+    if [ "$1" == "-fr" ]; then
+        setxkbmap fr
+    fi
 }
