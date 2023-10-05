@@ -8,10 +8,12 @@ if [ "$EUID" -ne 0 ]
     exit 1
 fi
 
-source "src/log.sh"
-source "src/setup.sh"
-source "src/install_lst.sh"
-source "src/screens.sh"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+for file in "$DIR/src/"*.sh
+do
+    source "$file"
+done
 
 function main {
     install_dependencies
