@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ../src/log.sh
+source ./log.sh
 
 function install_lst {
     if [ $# -ne 2 ]
