@@ -11,8 +11,7 @@ function configure_script {
 # This function configures the bashrc file by moving any existing bashrc file to a backup location and copying a new bashrc file to the home directory.
 # If a bashrc file already exists, it will be moved to a backup location before the new file is copied.
 function configure_bash {
-    if [ -f ~/.bashrc ]
-    then
+    if [ -f ~/.bashrc ]; then
         echo_log "moving existing bashrc to backup"
         mv ~/.bashrc ~/.bashrc.bak
     fi
@@ -26,8 +25,7 @@ function configure_i3wm {
     # Copy i3 config
     echo_log "creating i3wm config directory"
     mkdir -p ~/.config/i3
-    if [ -f ~/.config/i3/config ]
-    then
+    if [ -f ~/.config/i3/config ]; then
         echo_log "moving existing i3wm config to backup"
         mv ~/.config/i3/config ~/.config/i3/config.bak
     fi 
@@ -35,8 +33,7 @@ function configure_i3wm {
     cp ../data/i3wm/config ~/.config/i3/config
 
     # Copy bar config
-    if [ -f ~/.config/i3/i3status.conf ]
-    then
+    if [ -f ~/.config/i3/i3status.conf ]; then
         echo_log "moving existing i3status config to backup"
         sudo mv ~/.config/i3/i3status.conf ~/.config/i3/i3status.conf.bak
     fi

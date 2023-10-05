@@ -22,6 +22,8 @@ font pango:cascadiacove 8
 exec --no-startup-id xset m 0 0
 exec --no-startup-id xrandr --output DP-3 --mode 2560x1440 --rate 144
 exec --no-startup-id redshift
+exec --no-startup-id xfce4-clipman
+
 
 bindsym $mod+m exec /home/$USER/.config/scripts/lock
 
@@ -47,6 +49,7 @@ bindsym $mod+Print exec ~/.scripts/screenshot.sh select
 # Applications shortcuts
 bindsym $mod+Shift+p exec pavucontrol
 bindsym $mod+c exec --no-startup-id code
+bindsym $mod+b exec --no-startup-id thunar
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -63,8 +66,9 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Application launcher
-bindsym $mod+o exec --no-startup-id rofi -show drun
-bindsym $mod+p exec --no-startup-id rofi -show run
+bindsym $mod+o exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher-run.sh
+bindsym $mod+p exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher-drun.sh
+bindsym $mod+x exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
 
 # Wallpaper manager
 exec --no-startup-id nitrogen --restore

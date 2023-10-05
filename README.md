@@ -3,6 +3,8 @@ My minimalist i3 configuration
 
 <img src="img/desktop.png" alt="screenshot" width="100%">
 
+<summary>Shortcut keys</summary>
+
 ---
 
 <details>
@@ -22,7 +24,7 @@ My minimalist i3 configuration
 | Tools | Description |
 | --- | --- |
 | `feh` | Image viewer |
-| `scrot` | Screenshot tool |
+| `maim` | Screenshot tool |
 | `xclip` | Clipboard manager |
 | `xautolock` | Screen locker |
 | `xbacklight` | Screen brightness |
@@ -43,12 +45,14 @@ My minimalist i3 configuration
 | `lxsession` | Session manager |
 | `papirus-icon-theme` | Icon theme |
 
-| Fonts | |
-| --- | --- |
-| `ttf-roboto-mono-nerd` | Font |
-| `ttf-jetbrains-mono-nerd` | Font |
-| `ttf-font-awesome` | Font |
-| `ttf-joypixels` | Font |
-
+| Fonts |
+| --- |
+| `ttf-roboto-mono-nerd` |
+| `ttf-jetbrains-mono-nerd` |
+| `ttf-font-awesome` |
+| `ttf-joypixels` |
+| `ttf-maple` |
+| `noto-fonts` |
+| `noto-fonts-emoji-flags` |
 
 </details>
