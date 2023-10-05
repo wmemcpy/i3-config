@@ -3,6 +3,10 @@
 # abort on errors
 set -e
 
+if [ "$1" == "-v" ] || [ "$1" == "--verbose" ]; then
+    set -x
+fi
+
 sudo -v
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
