@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-source ./install_lst.sh
-source ./log.sh
+source "install_lst.sh"
+source "log.sh"
+
+export -f install_dependencies
+export -f install_yay
+export -f install_i3wm
 
 # Installs git and base-devel dependencies and updates the system.
 function install_dependencies {

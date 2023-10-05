@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
-source ./install_lst.sh
-source ./log.sh
+source "install_lst.sh"
+source "log.sh"
+
+export -f configure_script
+export -f configure_bash
+export -f configure_i3wm
+
 
 # This function creates a directory for scripts and copies scripts from a data directory to the newly created directory.
 function configure_script {

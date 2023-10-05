@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export -f script_screen_generate
+
 # This function generates a script that sets the maximum resolution and refresh rate for each connected display using xrandr.
 # The script is saved to $HOME/.scripts/screens.sh
 function script_screen_generate() {
