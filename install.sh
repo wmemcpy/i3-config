@@ -13,7 +13,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$DIR/src/log.sh"
 source "$DIR/src/setup.sh"
 source "$DIR/src/install_lst.sh"
-
+source "$DIR/src/screens.sh"
 
 function main {
     install_dependencies
@@ -23,4 +23,6 @@ function main {
     configure_script
     configure_bash
     configure_i3wm
+
+    script_screen_generate
 }
