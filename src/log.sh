@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 function init_log_file {
     if [ ! -d "../log" ]; then
