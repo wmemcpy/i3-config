@@ -3,10 +3,7 @@
 # abort on errors
 set -e
 
-# if [ "$EUID" -ne 0 ]
-#     then echo "Please run as root"
-#     exit 1
-# fi
+sudo -v
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
