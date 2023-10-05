@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-source "log.sh"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-export -f install_lst
+source "$DIR/log.sh"
 
 function install_lst {
     if [ $# -ne 2 ]
@@ -43,3 +43,5 @@ function install_lst {
         $1 -S --noconfirm --needed "$line"
     done < "$2"
 }
+
+export -f install_lst

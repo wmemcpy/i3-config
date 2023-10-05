@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-source "install_lst.sh"
-source "log.sh"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-export -f install_dependencies
-export -f install_yay
-export -f install_i3wm
+source "$DIR/install_lst.sh"
+source "$DIR/log.sh"
 
 # Installs git and base-devel dependencies and updates the system.
 function install_dependencies {
@@ -14,6 +12,8 @@ function install_dependencies {
     echo_log "updating system"
     sudo pacman -Syyuu --noconfirm
 }
+
+export -f install_dependencies
 
 # Installs yay package manager if it's not already installed.
 function install_yay {
@@ -31,7 +31,11 @@ function install_yay {
     fi
 }
 
+export -f install_yay
+
 # Installs i3 window manager using yay package manager
 function install_i3wm {
     install_lst yay "$DIR/data/i3wm/i3wm.lst"
 }
+
+export -f install_i3wm
