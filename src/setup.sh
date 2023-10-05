@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-source ../src/install_lst.sh
-source ../src/log.sh
+source ./install_lst.sh
+source ./log.sh
 
 # This function creates a directory for scripts and copies scripts from a data directory to the newly created directory.
 function configure_script {

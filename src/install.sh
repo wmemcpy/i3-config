@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-source ../src/install_lst.sh
-source ../src/log.sh
+source ./install_lst.sh
+source ./log.sh
 
 # Installs git and base-devel dependencies and updates the system.
 function install_dependencies {
