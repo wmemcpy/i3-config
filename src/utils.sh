@@ -3,12 +3,9 @@
 LOG_FILE=""
 
 function init_log_file {
-    read -p "Do you want to log the installation? (y/n) " answer
+    mkdir -p "../log"
 
-    mkdir -p "${DIR}/../log"
-
-    local nb_log_file=$(ls "${DIR}/../log/" | wc -l)
-    local log_file="${DIR}/../log/log_$nb_log_file.txt"
+    local log_file="../log/log.txt"
 
     if [ ! -f "$log_file" ]; then
         touch "$log_file"

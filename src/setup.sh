@@ -7,7 +7,7 @@ function configure_script {
     echo_log "creating scripts directory"
     mkdir -p ~/.scripts
     echo_log "copying scripts"
-    cp ../data/scripts/* ~/.scripts
+    cp data/scripts/* ~/.scripts
 }
 
 export -f configure_script
@@ -20,7 +20,7 @@ function configure_bash {
         mv ~/.bashrc ~/.bashrc.bak
     fi
     echo_log "copying bashrc"
-    cp ../data/bash/bashrc ~/.bashrc
+    cp data/.bashrc ~/.bashrc
 }
 
 export -f configure_bash
@@ -36,7 +36,7 @@ function configure_i3wm {
         mv ~/.config/i3/config ~/.config/i3/config.bak
     fi 
     echo_log "copying i3wm config"
-    cp ../data/i3wm/config ~/.config/i3/config
+    cp data/i3wm/config ~/.config/i3/config
 
     # Copy bar config
     if [ -f ~/.config/i3/i3status.conf ]; then
@@ -44,7 +44,7 @@ function configure_i3wm {
         sudo mv ~/.config/i3/i3status.conf ~/.config/i3/i3status.conf.bak
     fi
     echo_log "copying i3status config"
-    sudo cp ../data/i3wm/i3status.conf ~/.config/i3/i3status.conf
+    sudo cp data/i3wm/i3status.conf ~/.config/i3/i3status.conf
 }
 
 export -f configure_i3wm
