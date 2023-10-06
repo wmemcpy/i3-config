@@ -30,21 +30,27 @@ export -f configure_bash
 function configure_i3wm {
     # Copy i3 config
     echo_log "creating i3wm config directory"
+
+    local config_path=".config/i3/config"
+
+    echo_log "creating i3wm config directory"
     mkdir -p ~/.config/i3
-    if [ -f ~/.config/i3/config ]; then
+    if [ -f $config ]; then
         echo_log "moving existing i3wm config to backup"
-        mv ~/.config/i3/config ~/.config/i3/config.bak
+        mv $config_path $config_path.bak
     fi 
     echo_log "copying i3wm config"
-    cp data/i3wm/config ~/.config/i3/config
+    cp data/i3wm/config $config_path
+
+    local status_path="/etc/i3status.conf"
 
     # Copy bar config
-    if [ -f ~/.config/i3/i3status.conf ]; then
+    if [ -f $status_path ]; then
         echo_log "moving existing i3status config to backup"
-        sudo mv ~/.config/i3/i3status.conf ~/.config/i3/i3status.conf.bak
+        sudo mv $status_path $status_path.bak
     fi
     echo_log "copying i3status config"
-    sudo cp data/i3wm/i3status.conf ~/.config/i3/i3status.conf
+    sudo cp data/i3wm/i3status.conf $status_path
 }
 
 export -f configure_i3wm
