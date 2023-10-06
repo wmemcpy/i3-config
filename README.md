@@ -52,7 +52,6 @@ My minimalist i3 configuration
 | `ttf-font-awesome` |
 | `ttf-joypixels` |
 | `ttf-maple` |
-| `noto-fonts` |
 | `noto-fonts-emoji-flags` |
 
 </details>

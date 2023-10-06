@@ -38,4 +38,9 @@ function install_i3wm {
     install_lst yay "data/i3wm/i3wm.lst"
 }
 
+function install_utils {
+    install_lst pacman "data/fonts.lst"
+    install_lst pacman "data/utils.lst"
+}
+
 export -f install_i3wm
