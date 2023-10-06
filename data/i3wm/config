@@ -20,7 +20,7 @@ font pango:cascadiacove 8
 #font pango:DejaVu Sans Mono 8
 
 exec --no-startup-id xset m 0 0
-exec --no-startup-id xrandr --output DP-3 --mode 2560x1440 --rate 144
+exec --no-startup-id ~/.scripts/screens.sh
 exec --no-startup-id redshift
 exec --no-startup-id xfce4-clipman
 

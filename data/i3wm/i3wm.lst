@@ -6,3 +6,4 @@ lightdm-gtk-greeter
 lightdm
 rofi
 kitty
+xorg-xrandr
