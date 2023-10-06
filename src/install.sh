@@ -17,12 +17,15 @@ function install_yay {
     if ! command -v yay &> /dev/null
     then
         echo_log "cloning yay"
-        git clone https://aur.archlinux.org/yay-bin.git
-        cd yay-bin
+        local dir=$(pwd)
+        rm -rf yay-bin
+        git clone https://aur.archlinux.org/yay-bin.git ~
         echo_log "building yay"
+        cd yay-bin
         makepkg -si --noconfirm
         cd ..
         rm -rf yay-bin
+        cd $(dir)
     else
         echo_log "yay already installed"
     fi
@@ -32,7 +35,7 @@ export -f install_yay
 
 # Installs i3 window manager using yay package manager
 function install_i3wm {
-    install_lst yay "$DIR/data/i3wm/i3wm.lst"
+    install_lst yay "data/i3wm/i3wm.lst"
 }
 
 export -f install_i3wm
