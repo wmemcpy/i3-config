@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+source "src/utils.sh"
 
 # This function generates a script that sets the maximum resolution and refresh rate for each connected display using xrandr.
 # The script is saved to $HOME/.scripts/screens.sh

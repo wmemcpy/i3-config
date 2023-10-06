@@ -1,19 +1,16 @@
 #!/usr/bin/env bash
 
+sudo -v -p "Please enter your sudo password: "
+
 set -e
 
 if [ "$1" == "-v" ] || [ "$1" == "--verbose" ]; then
     set -x
 fi
 
-sudo -v
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-for file in "$DIR/src/"*.sh
-do
-    source "$file"
-done
+source "src/install.sh"
+source "src/screens.sh"
+source "src/setup.sh"
 
 function main {
     init_log_file
