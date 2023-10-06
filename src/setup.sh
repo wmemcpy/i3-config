@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-source "$DIR/install_lst.sh"
-source "$DIR/log.sh"
+source "src/utils.sh"
 
 # This function creates a directory for scripts and copies scripts from a data directory to the newly created directory.
 function configure_script {
