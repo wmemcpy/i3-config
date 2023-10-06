@@ -31,7 +31,7 @@ function configure_i3wm {
     # Copy i3 config
     echo_log "creating i3wm config directory"
 
-    local config_path=".config/i3/config"
+    local config_path="~/.config/i3/config"
 
     echo_log "creating i3wm config directory"
     mkdir -p ~/.config/i3
