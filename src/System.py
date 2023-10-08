@@ -1,8 +1,7 @@
 from subprocess import run, PIPE, CalledProcessError
-from datetime import datetime
-from os import remove, path, makedirs
+from os import remove, system
 from shutil import copy, SameFileError
-
+from datetime import datetime 
 
 class System:
     def __init__(self, log_file: str = "log.log", log: bool = True) -> None:
@@ -24,16 +23,21 @@ class System:
             with open(self.log_file, "a") as f:
                 f.write(f"[{datetime.now()}]: {cmd}\n")
 
-    def command(self, cmd: str, tiny_cmd: str) -> str:
+    def command(self, cmd: str, tiny_cmd: str) -> None:
         print(f"\033[92m[+]\033[0m {tiny_cmd}")
         self.__log_command(cmd)
 
         try:
-            result = run(cmd, shell=True, check=True, text=True, stdout=PIPE, stderr=PIPE)
-            return result.stdout
+            if cmd.startswith("sudo"):
+                system(f"{cmd} >> {self.log_file} 2>&1")
+            else:
+                run(cmd, shell=True, check=True, text=True, stdout=PIPE, stderr=PIPE)
         except CalledProcessError as e:
-            self.__log_command(f"An error occurred: {str(e)}", error=True)
-            return e.stderr
+            self.__log_command(f"Failed to execute {cmd}: {e.stderr}", error=True)
+            exit(1)
+        except Exception as e:
+            self.__log_command(f"Failed to execute {cmd}: {str(e)}", error=True)
+            exit(1)
 
     def copy_file(self, src: str, dst: str) -> None:
         try:
