@@ -28,7 +28,7 @@ class System:
         self.__log_command(cmd)
 
         try:
-            if cmd.startswith("sudo"):
+            if "sudo" in cmd:
                 system(f"{cmd} >> {self.log_file} 2>&1")
             else:
                 run(cmd, shell=True, check=True, text=True, stdout=PIPE, stderr=PIPE)
