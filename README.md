@@ -1,7 +1,7 @@
 # i3-config
 My minimalist i3 configuration
 
-<img src="img/desktop.png" alt="screenshot" width="100%">
+<img src="data/Desktop.png" alt="screenshot" width="100%">
 
 <summary>Shortcut keys</summary>
 
