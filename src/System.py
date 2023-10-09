@@ -1,5 +1,6 @@
 from subprocess import run, PIPE, CalledProcessError
 from os import remove, system
+from os import makedirs, path
 from shutil import copy, SameFileError
 from datetime import datetime 
 
@@ -23,7 +24,7 @@ class System:
             with open(self.log_file, "a") as f:
                 f.write(f"[{datetime.now()}]: {cmd}\n")
 
-    def command(self, cmd: str, tiny_cmd: str) -> None:
+    def command(self, cmd: str, tiny_cmd: str):
         print(f"\033[92m[+]\033[0m {tiny_cmd}")
         self.__log_command(cmd)
 
@@ -41,13 +42,13 @@ class System:
 
     def copy_file(self, src: str, dst: str) -> None:
         try:
+            makedirs(path.dirname(dst), exist_ok=True)
             copy(src, dst)
             self.__log_command(f"Copying {src} to {dst}")
-        except SameFileError:
-            self.__log_command("Source and destination represents the same file.")
+        except FileNotFoundError:
+            self.__log_command(f"File {src} does not exist", error=True)
         except PermissionError:
             self.__log_command(f"Permission denied: Cannot copy {src} to {dst}", error=True)
-            exit(1)            
         except Exception as e:
             self.__log_command(f"Failed to copy {src} to {dst}: {str(e)}", error=True)
             exit(1)
