@@ -1,5 +1,5 @@
-from src.PackageManagement import PackageManagement
-from src.System import System
+from Class.PackageManagement import PackageManagement
+from Class.System import System
 
 def install_i3wm(Pm: PackageManagement) -> bool:
     Pm.install_lst([

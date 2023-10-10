@@ -1,5 +1,5 @@
-from System import System
-from PackageManagement import PackageManagement
+from Class.System import System
+from Class.PackageManagement import PackageManagement
 
 def dev_software(Pm: PackageManagement):
     Pm.install_lst([
@@ -18,3 +18,19 @@ def dev_software(Pm: PackageManagement):
     ])
 
     System.copy_file("../config/Code/settings.json", "~/.config/Code/User/settings.json")
+
+def current_software(Pm: PackageManagement):
+    Pm.install_lst([
+        'spotify-launcher',
+        'discord',
+        'firefox',
+        'slack-desktop'
+    ])
+
+
+def flatpak(Pm: PackageManagement):
+    Pm.install("flatpak")
+
+    System.command("flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo", "Adding flathub repo")
+
+    Pm.faltapk_install("com.spotify.Client")

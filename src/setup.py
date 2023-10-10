@@ -1,8 +1,10 @@
-from System import System
-from PackageManagement import PackageManagement
+from Class.System import System
+from Class.PackageManagement import PackageManagement
+from re import compile
+from subprocess import run
 
 # https://aur.chaotic.cx/
-def chaotic_aur():
+def chaotic_aur() -> None:
     # Key ID
     key_id = "3056513887B78AEB"
 
@@ -39,8 +41,7 @@ def chaotic_aur():
     System().command(update_pkg_cmd, "Updating package")
 
 
-
-def mirrorlist():
+def mirrorlist() -> None:
     # Backup mirrorlist
     System().copy_file("/etc/pacman.d/mirrorlist", "/etc/pacman.d/mirrorlist.bak")
 
@@ -48,3 +49,32 @@ def mirrorlist():
     PackageManagement().install("reflector")
     # Update mirrorlist
     System().command("sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist", "Updating mirrorlist")
+
+
+def pacman_conf():
+    file_path: str = "/etc/pacman.conf"
+
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+
+    patterns = [
+        compile(r"#Color"),
+        compile(r"#CheckSpace"),
+        compile(r"#VerbosePkgLists"),
+        compile(r"#ParallelDownloads = 5"),
+    ]
+
+    new_lines = []
+    for line in lines:
+        if any(pattern.match(line) for pattern in patterns):
+            new_lines.append(line.lstrip('#').lstrip())
+            if compile(r"#ParallelDownloads = 5").match(line):
+                new_lines.append("ILoveCandy\n")
+        else:
+            new_lines.append(line)
+    
+    with open("temp_pacman.conf", 'w') as temp_file:
+        temp_file.writelines(new_lines)
+
+    run(["sudo", "cp", "temp_pacman.conf", file_path], check=True)
+    run(["rm", "temp_pacman.conf"], check=True)
