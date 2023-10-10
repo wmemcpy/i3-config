@@ -1,7 +1,7 @@
 from subprocess import run, PIPE, CalledProcessError
 from os import remove, system
 from os import makedirs, path
-from shutil import copy, SameFileError
+from shutil import copy
 from datetime import datetime 
 
 class System:
