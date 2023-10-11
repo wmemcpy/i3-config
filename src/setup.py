@@ -1,10 +1,9 @@
-from Class.System import System
-from Class.PackageManagement import PackageManagement
+from src.Class.PackageManagement import PackageManagement
 from re import compile
 from subprocess import run
 
 # https://aur.chaotic.cx/
-def chaotic_aur() -> None:
+def chaotic_aur(Pm: PackageManagement) -> None:
     # Key ID
     key_id = "3056513887B78AEB"
 
@@ -15,9 +14,9 @@ def chaotic_aur() -> None:
     pkg_keyring_url = "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst"
     pkg_mirrorlist_url = "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst"
 
-    recv_key_cmd = f"pacman-key --recv-key {key_id} --keyserver {keyserver}"
-    lsign_key_cmd = f"pacman-key --lsign-key {key_id}"
-    update_pkg_cmd = f"pacman -U '{pkg_keyring_url}' '{pkg_mirrorlist_url}'"
+    recv_key_cmd = f"sudo pacman-key --recv-key {key_id} --keyserver {keyserver}"
+    lsign_key_cmd = f"sudo pacman-key --lsign-key {key_id}"
+    update_pkg_cmd = f"sudo pacman -U '{pkg_keyring_url}' '{pkg_mirrorlist_url}' --noconfirm --needed"
 
 
     # Add repo
@@ -25,33 +24,45 @@ def chaotic_aur() -> None:
     [chaotic-aur]
     Include = /etc/pacman.d/chaotic-mirrorlist
     """
-    pacman_conf_path = "/etc/pacman.conf"
 
-    try:
-        with open(pacman_conf_path, 'a') as file:
-            file.write(lines_to_add)
-        print(f"Added repo to {pacman_conf_path}")
-    except Exception as e:
-        print(f"Failed to add repo to {pacman_conf_path}: {str(e)}")
+    file_path = "/etc/pacman.conf"
 
+    # Read file
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+
+    new_lines = []
+
+    # Check if repo already exists, if not add it
+    if not any("[chaotic-aur]" in line for line in lines):
+        for line in lines:
+            new_lines.append(line)
+            if line == lines[-1]:
+                new_lines.append(lines_to_add)
+    else:
+        new_lines = lines
+
+    # Write to temp file
+    with open("temp_pacman.conf", 'w') as temp_file:
+        temp_file.writelines(new_lines)
+
+    Pm.copy_file("temp_pacman.conf", "/etc/pacman.conf", sudo=True, log_msg="Adding chaotic-aur repo")
 
     # Add key
-    System().command(recv_key_cmd, "Receiving key")
-    System().command(lsign_key_cmd, "Signing key")
-    System().command(update_pkg_cmd, "Updating package")
+    Pm.command(recv_key_cmd, "Receiving key")
+    Pm.command(lsign_key_cmd, "Signing key")
+    Pm.command(update_pkg_cmd, "Updating package")
 
 
-def mirrorlist() -> None:
-    # Backup mirrorlist
-    System().copy_file("/etc/pacman.d/mirrorlist", "/etc/pacman.d/mirrorlist.bak")
-
+def mirrorlist(Pm: PackageManagement) -> None:
     # Install reflector
-    PackageManagement().install("reflector")
+    Pm.install("reflector")
     # Update mirrorlist
-    System().command("sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist", "Updating mirrorlist")
+    Pm.command("sudo reflector --verbose --score 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist", "Updating mirrorlist")
+    Pm.update_mirror()
 
 
-def pacman_conf():
+def pacman_conf(Pm: PackageManagement) -> None:
     file_path: str = "/etc/pacman.conf"
 
     with open(file_path, 'r') as file:
@@ -76,5 +87,4 @@ def pacman_conf():
     with open("temp_pacman.conf", 'w') as temp_file:
         temp_file.writelines(new_lines)
 
-    run(["sudo", "cp", "temp_pacman.conf", file_path], check=True)
-    run(["rm", "temp_pacman.conf"], check=True)
+    Pm.copy_file("temp_pacman.conf", "/etc/pacman.conf", sudo=True, log_msg="Updating pacman.conf")

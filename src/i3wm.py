@@ -1,5 +1,5 @@
-from Class.PackageManagement import PackageManagement
-from Class.System import System
+from src.Class.PackageManagement import PackageManagement
+from src.Class.System import System
 
 def install_i3wm(Pm: PackageManagement) -> bool:
     Pm.install_lst([
@@ -11,7 +11,6 @@ def install_i3wm(Pm: PackageManagement) -> bool:
 		'lightdm-gtk-greeter',
 		'lightdm',
 		'rofi'
-        'xdg-'
     ])
 
 def systemctl_config(Pm: PackageManagement) -> bool:
@@ -31,7 +30,7 @@ def essential_build(Pm: PackageManagement) -> bool:
         'feh',
         'redshift',
         'picom',
-        'polkit'
+        'polkit',
         'polkit-gnome',
         'vim',
         'viewnior',
@@ -62,6 +61,3 @@ def install_fonts(Pm: PackageManagement) -> bool:
         'noto-fonts-emoji-flags',
         'ttf-maple'
     ])
-
-def copy_scripts():
-    System.copy_file("../scripts/*", '~/scripts')
