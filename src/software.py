@@ -1,5 +1,5 @@
-from Class.System import System
-from Class.PackageManagement import PackageManagement
+from src.Class.System import System
+from src.Class.PackageManagement import PackageManagement
 
 def dev_software(Pm: PackageManagement):
     Pm.install_lst([
@@ -12,12 +12,11 @@ def dev_software(Pm: PackageManagement):
         'cmake',
         'make',
         'rust',
-        'rustup',
         'zig',
         'go'
     ])
 
-    System.copy_file("../config/Code/settings.json", "~/.config/Code/User/settings.json")
+    Pm.copy_file("config/Code/settings.json", "~/.config/Code/User/settings.json", log_msg="Copying settings.json to Code")
 
 def current_software(Pm: PackageManagement):
     Pm.install_lst([
@@ -31,6 +30,9 @@ def current_software(Pm: PackageManagement):
 def flatpak(Pm: PackageManagement):
     Pm.install("flatpak")
 
-    System.command("flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo", "Adding flathub repo")
+    Pm.command("flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo", "Adding flathub repo")
 
-    Pm.faltapk_install("com.spotify.Client")
+    Pm.install_lst([
+        'com.github.tchx84.Flatseal',
+        'com.github.tchx84.Flatsweep'
+    ], flatpak=True)

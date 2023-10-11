@@ -1,4 +1,4 @@
-from System import System
+from src.Class.System import System
 
 
 class PackageManagement(System):
