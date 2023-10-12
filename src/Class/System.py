@@ -42,6 +42,11 @@ class System:
     def copy_file(self, src: str, dst: str, sudo: bool = False, log_msg: str = "") -> None:
         sudo_cmd = "sudo " if sudo else ""
         try:
+            dst_dir = path.dirname(dst)
+            if not path.exists(dst_dir):
+                self.command(f"{sudo_cmd}mkdir -p {dst_dir}",
+                             f"Creating directory {dst_dir}")
+
             if path.exists(dst):
                 self.command(f"{sudo_cmd}cp {dst} {dst}.bak",
                              f"Backing up {dst}")

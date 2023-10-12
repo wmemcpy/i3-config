@@ -3,6 +3,7 @@ from src.Class.System import System
 
 
 def install_i3wm(Pm: PackageManagement) -> bool:
+    Pm.command("sudo pacman -R i3lock --noconfirm", "Removing i3lock")
     Pm.install_lst([
         'i3-wm',
         'i3lock-color',

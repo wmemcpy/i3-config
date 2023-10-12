@@ -20,8 +20,8 @@ class PackageManagement(System):
         self.command(f"flatpak install -y {package}", f"Installing {package}")
 
     def update_mirror(self) -> None:
-        self.command(f"sudo {self.system_package} -Syyuu",
-                     "Updeating mirrorlist")
+        self.command(f"sudo {self.system_package} -Syyuu --noconfirm --needed",
+                     "Updating mirror"
 
     def update_system(self) -> None:
         self.command(

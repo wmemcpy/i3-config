@@ -33,6 +33,7 @@ def current_software(Pm: PackageManagement):
 
     Pm.command("glava --copy-config", "Copying glava config")
 
+
 def flatpak(Pm: PackageManagement):
     Pm.install("flatpak")
 

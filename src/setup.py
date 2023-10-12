@@ -1,6 +1,7 @@
 from src.Class.PackageManagement import PackageManagement
 from re import compile
 
+
 def mirrorlist(Pm: PackageManagement) -> None:
     # Install reflector
     Pm.install("reflector")
