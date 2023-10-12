@@ -170,24 +170,24 @@ chmod +x __main__.py
 | `imagemagick`       | Software suite to create, edit, compose, or convert bitmap images |
 
 ### Fonts
-| Package                               | Description                               |
-|---------------------------------------|-------------------------------------------|
-| `gnu-free-fonts`                        | Set of free fonts from the GNU project    |
-| `ttf-roboto-mono`                       | Monospaced font with a modern appearance  |
-| `ttf-font-awesome`                      | Iconic font set for web-related projects  |
-| `noto-fonts`                            | Google's Noto fonts for multiple languages|
-| `ttf-joypixels`                         | Emoji font                                |
-| `ttf-dejavu`                            | Font family based on the Vera Fonts       |
-| `ttf-liberation`                        | Font set with good Unicode coverage       |
-| `ttf-inconsolata`                       | Monospace font for pretty code listings   |
-| `ttf-hack-nerd`                         | A typeface designed for source code       |
-| `ttf-fira-code`                         | Monospaced font with programming ligatures|
-| `ttf-jetbrains-mono-nerd`               | JetBrains Mono font with Nerd Fonts patches|
-| `ttf-mononoki-nerd`                     | Mononoki font with Nerd Fonts patches     |
-| `ttf-cascadia-code-nerd`                | Cascadia Code font with Nerd Fonts patches|
-| `ttf-material-design-icons-extended`    | Extended Material Design icons font       |
-| `noto-fonts-emoji-flags`                | Emoji and flags font from Google’s Noto fonts|
-| `ttf-maple`                             | A Unicode font for displaying Chinese, Japanese, and Korean characters|
+| Package                                 |
+|-----------------------------------------|
+| `gnu-free-fonts`                        |
+| `ttf-roboto-mono`                       |
+| `ttf-font-awesome`                      |
+| `noto-fonts`                            |
+| `ttf-joypixels`                         |
+| `ttf-dejavu`                            |
+| `ttf-liberation`                        |
+| `ttf-inconsolata`                       |
+| `ttf-hack-nerd`                         |
+| `ttf-fira-code`                         |
+| `ttf-jetbrains-mono-nerd`               |
+| `ttf-mononoki-nerd`                     |
+| `ttf-cascadia-code-nerd`                |
+| `ttf-material-design-icons-extended`    |
+| `noto-fonts-emoji-flags`                |
+| `ttf-maple`                             |
 
 ### i3 Window Manager and Related Packages
 | Package               | Description                                               |
