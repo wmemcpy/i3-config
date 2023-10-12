@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from src.Class.PackageManagement import PackageManagement
 from src.setup import chaotic_aur, mirrorlist, pacman_conf
 from src.i3wm import install_i3wm, systemctl_config, essential_build, install_fonts
@@ -38,8 +40,9 @@ def main():
     while (loc_aur != "yay" and loc_aur != "paru"):
         loc_aur = input("You want to install yay or paru? (yay/paru): ")
     Pm.aur = loc_aur
-    Pm.install(Pm.aur)
+
     chaotic_aur(Pm)
+    Pm.install(Pm.aur)
     mirrorlist(Pm)
     pacman_conf(Pm)
 

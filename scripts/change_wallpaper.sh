@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 WALLPAPER_DIR=~/Images/Wallpaper
 
-SLEEP_TIME=60
+SLEEP_TIME=1800
 
 if [ ! -d "$WALLPAPER_DIR" ]; then
     echo "Le dossier $WALLPAPER_DIR n'existe pas."

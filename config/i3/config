@@ -20,10 +20,11 @@ font pango:cascadiacove 8
 #font pango:DejaVu Sans Mono 8
 
 exec --no-startup-id xset m 0 0
-exec --no-startup-id xrandr --output DP-1 --off --output DP-2 --off --output DP-3 --mode 2560x1440  --rate 144 --pos 0x0 --rotate normal --output HDMI-1 --off
+exec --no-startup-id ~/.scripts/resolution.sh
 exec --no-startup-id redshift
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id ~/.scripts/change_wallpaper.sh
+exec --no-startup-id glava --dekstop
 
 # gaps inner 10
 # exec_always --no-startup-id ~/.scripts/gap_control.py
@@ -37,12 +38,6 @@ for_window [class="pavucontrol"] floating enable
 
 # Compositor
 exec_always picom
-
-# Set colors for focused and unfocused workspace
-# set $bgcolor    #523d6499
-# set $in-bgcolor #3636364D
-# set $focused-ws #523d6480
-# set $bar-color  #523d640D
 
 exec_always /usr/lib/polkit-kde-authentication-agent-1
 
@@ -70,9 +65,9 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Application launcher
-bindsym $mod+o exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher-run.sh
-bindsym $mod+p exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher-drun.sh
-bindsym $mod+x exec --no-startup-id ~/.config/rofi/powermenu/type-2/powermenu.sh
+bindsym $mod+o exec --no-startup-id rofi -show run
+bindsym $mod+p exec --no-startup-id rofi -show drun
+bindsym $mod+x exec --no-startup-id rofi -show p -modi p:rofi-power-menu
 
 # Wallpaper manager
 exec --no-startup-id nitrogen --restore

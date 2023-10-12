@@ -8,9 +8,9 @@ class PackageManagement(System):
         self.system_package = system_package
         self.aur = aur
 
-    # def __system_install(self, package: str) -> None:
-    #     self.command(
-    #         f"sudo {self.system_package} -S --noconfirm --needed {package}", f"Installing {package}")
+    def __system_install(self, package: str) -> None:
+        self.command(
+            f"sudo {self.system_package} -S --noconfirm --needed {package}", f"Installing {package}")
 
     def __aur_install(self, package: str) -> None:
         self.command(
@@ -27,9 +27,13 @@ class PackageManagement(System):
         self.command(
             f"sudo {self.system_package} -Syu --noconfirm", "Updating system")
 
-    def install(self, package: str, flatpak: bool = False) -> None:
-        self.__aur_install(
-            package) if not flatpak else self.__faltapk_install(package)
+    def install(self, package: str, flatpak: bool = False, aur: bool = True) -> None:
+        if flatpak:
+            self.__faltapk_install(package)
+        elif aur:
+            self.__aur_install(package)
+        else:
+            self.__system_install(package)
 
     def install_lst(self, packages: list[str], flatpak: bool = False) -> None:
         for package in packages:
