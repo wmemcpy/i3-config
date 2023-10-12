@@ -21,7 +21,7 @@ class PackageManagement(System):
 
     def update_mirror(self) -> None:
         self.command(f"sudo {self.system_package} -Syyuu --noconfirm --needed",
-                     "Updating mirror"
+                     "Updating mirror")
 
     def update_system(self) -> None:
         self.command(
