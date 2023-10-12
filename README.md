@@ -42,6 +42,7 @@ This script, written in Python, automates the process of modifying configuration
 
 ```bash
 # Clone the repository
+sudo pacman -Suy git python
 git clone https://github.com/wmemcpy/i3-config.git ~/i3-config
 cd ~/i3-config
 
