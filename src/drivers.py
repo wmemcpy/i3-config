@@ -1,6 +1,7 @@
 from src.Class.PackageManagement import PackageManagement
 from src.Class.System import System
 
+
 def install_driver(Pm: PackageManagement):
     # Video drivers (AMD)
     Pm.install_lst([

@@ -3,6 +3,8 @@ from re import compile
 from subprocess import run
 
 # https://aur.chaotic.cx/
+
+
 def chaotic_aur(Pm: PackageManagement) -> None:
     # Key ID
     key_id = "3056513887B78AEB"
@@ -17,7 +19,6 @@ def chaotic_aur(Pm: PackageManagement) -> None:
     recv_key_cmd = f"sudo pacman-key --recv-key {key_id} --keyserver {keyserver}"
     lsign_key_cmd = f"sudo pacman-key --lsign-key {key_id}"
     update_pkg_cmd = f"sudo pacman -U '{pkg_keyring_url}' '{pkg_mirrorlist_url}' --noconfirm --needed"
-
 
     # Add repo
     lines_to_add = """
@@ -46,8 +47,11 @@ def chaotic_aur(Pm: PackageManagement) -> None:
     with open("temp_pacman.conf", 'w') as temp_file:
         temp_file.writelines(new_lines)
 
-    Pm.copy_file("temp_pacman.conf", "/etc/pacman.conf", sudo=True, log_msg="Adding chaotic-aur repo")
+    Pm.copy_file("temp_pacman.conf", "/etc/pacman.conf",
+                 sudo=True, log_msg="Adding chaotic-aur repo")
 
+    # Delete temp file
+    Pm.command("rm temp_pacman.conf", "Deleting temp file")
     # Add key
     Pm.command(recv_key_cmd, "Receiving key")
     Pm.command(lsign_key_cmd, "Signing key")
@@ -83,8 +87,9 @@ def pacman_conf(Pm: PackageManagement) -> None:
                 new_lines.append("ILoveCandy\n")
         else:
             new_lines.append(line)
-    
+
     with open("temp_pacman.conf", 'w') as temp_file:
         temp_file.writelines(new_lines)
 
-    Pm.copy_file("temp_pacman.conf", "/etc/pacman.conf", sudo=True, log_msg="Updating pacman.conf")
+    Pm.copy_file("temp_pacman.conf", "/etc/pacman.conf",
+                 sudo=True, log_msg="Updating pacman.conf")
