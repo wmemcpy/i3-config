@@ -26,7 +26,6 @@ def current_software(Pm: PackageManagement):
         'spotify-launcher',
         'discord',
         'firefox',
-        'ungoogled-chromium',
         'slack-desktop',
         'glava',
     ])
