@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from src.Class.PackageManagement import PackageManagement
-from src.setup import chaotic_aur, mirrorlist, pacman_conf
+from src.setup import mirrorlist, pacman_conf
 from src.i3wm import install_i3wm, systemctl_config, essential_build, install_fonts
 from src.drivers import install_driver
 from src.software import dev_software, current_software, flatpak
@@ -35,14 +35,21 @@ def main():
     print_welcome_message()
 
     Pm = PackageManagement()
-    
+
+    # Install yay or paru    
     loc_aur: str = ""
     while (loc_aur != "yay" and loc_aur != "paru"):
         loc_aur = input("You want to install yay or paru? (yay/paru): ")
     Pm.aur = loc_aur
 
-    chaotic_aur(Pm)
-    Pm.install(Pm.aur)
+    Pm.command("sudo pacman -S --noconfirm --needed git base-devel", "Installing git and base-devel")
+    if Pm.aur == "paru":
+        Pm.command("git clone https://aur.archlinux.org/paru.git", "Cloning paru")
+        Pm.command("cd paru && makepkg -si --noconfirm && cd ..", "Installing paru")
+    else:
+        Pm.command("git clone https://aur.archlinux.org/yay-bin.git", "Cloning yay")
+        Pm.command("cd yay-bin && makepkg -si --noconfirm && cd ..", "Installing yay")
+
     mirrorlist(Pm)
     pacman_conf(Pm)
 
