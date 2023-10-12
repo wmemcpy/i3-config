@@ -58,7 +58,8 @@ def main():
     essential_build(Pm)
     install_fonts(Pm)
 
-    Pm.copy_file("scripts/*", "~/.scripts", log_msg="Copying scripts to ~/.scripts")
+    Pm.command("mkdir -p ~/.scripts", "Creating ~/.scripts")
+    Pm.copy_file("scripts/*", "~/.scripts/", log_msg="Copying scripts to ~/.scripts")
 
     install_driver(Pm)
 
