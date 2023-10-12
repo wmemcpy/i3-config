@@ -45,4 +45,5 @@ def flatpak(Pm: PackageManagement):
         'com.valvesoftware.Steam',
         'net.lutris.Lutris',
         'com.heroicgameslauncher.hgl',
+        'org.kde.KStyle.Kvantum'
     ], flatpak=True)
