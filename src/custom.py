@@ -2,9 +2,8 @@ from src.Class.PackageManagement import PackageManagement
 
 
 def wallpapers(Pm: PackageManagement):
-    Pm.command("wget -P ~/Images/Wallpaper https://wallpapercave.com/download/wakfu-wallpapers-wp1986515 https://wallpapercave.com/download/wakfu-wallpapers-wp1986665 https://wallpapercave.com/download/wakfu-wallpapers-wp1986676", "Downloading wallpaper Wakfu")
-    Pm.command("wget -P ~/Images/Wallpaper https://wallpapercave.com/download/spider-man-across-the-spider-verse-movie-wallpapers-wp11834730 https://wallpapercave.com/download/spider-man-across-the-spider-verse-movie-wallpapers-wp11834717 https://wallpapercave.com/download/spider-man-across-the-spider-verse-movie-wallpapers-wp11839530 https://wallpapercave.com/download/spider-man-across-the-spider-verse-movie-wallpapers-wp11834745 https://wallpapercave.com/download/spider-man-across-the-spider-verse-movie-wallpapers-wp11459908 https://wallpapercave.com/download/spider-man-across-the-spider-verse-movie-wallpapers-wp11846249", "Downloading wallpaper Spiderman")
-    Pm.command("wget -P ~/Images/Wallpaper https://wallpapercave.com/download/gravity-falls-laptop-wallpapers-wp6391301 https://wallpapercave.com/download/gravity-falls-laptop-wallpapers-wp11430355 https://wallpapercave.com/download/gravity-falls-laptop-wallpapers-wp11430366 https://wallpapercave.com/download/gravity-falls-laptop-wallpapers-wp11430371 https://wallpapercave.com/download/gravity-falls-laptop-wallpapers-wp11430374 https://wallpapercave.com/download/gravity-falls-laptop-wallpapers-wp11430378", "Downloading wallpaper Gravity Falls")
+    Pm.command("wget -P ~/Images/Wallpaper https://wallpapercave.com/wp/wp11834730.jpg https://wallpapercave.com/wp/wp11843903.jpg https://wallpapercave.com/wp/wp3087334.jpg", "Downloading wallpaper Spiderman")
+    Pm.command("wget -P ~/Images/Wallpaper https://wallpapercave.com/wp/wp6391301.png https://wallpapercave.com/wp/wp5946817.png https://wallpapercave.com/wp/wp1812237.jpg", "Downloading wallpaper Gravity Falls")
 
 
 def config(Pm: PackageManagement):
