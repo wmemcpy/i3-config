@@ -1,3 +1,4 @@
+from pexpect import spawn, ExceptionPexpect
 from subprocess import run, PIPE, CalledProcessError
 from os import remove, system, path
 from datetime import datetime
@@ -59,3 +60,21 @@ class System:
         except Exception as e:
             self.__log_command(
                 f"Failed to copy {src} to {dst}: {str(e)}", error=True)
+
+    def command_with_enter(self, cmd: str, expected_text: str):
+        print(
+            f"\033[92m[+]\033[0m Executing {cmd} and waiting for {expected_text}")
+        self.__log_command(cmd)
+
+        try:
+            child = spawn(cmd, timeout=10)  # NOTE: Adjust timeout as needed
+            child.expect(expected_text)
+            child.sendline('')
+            child.wait()
+            return child.before.decode()
+        except ExceptionPexpect as e:
+            self.__log_command(
+                f"Failed to execute {cmd} with enter: {str(e)}", error=True)
+        except Exception as e:
+            self.__log_command(
+                f"Failed to execute {cmd} with enter: {str(e)}", error=True)

@@ -1,5 +1,5 @@
-from src.Class.System import System
 from src.Class.PackageManagement import PackageManagement
+
 
 
 def dev_software(Pm: PackageManagement):
@@ -14,7 +14,9 @@ def dev_software(Pm: PackageManagement):
         'make',
         'rust',
         'zig',
-        'go'
+        'go',
+        'jdk8-openjdk',
+        'jdk17-openjdk'
     ])
 
     Pm.copy_file("config/Code/settings.json", "~/.config/Code/User/settings.json",
@@ -31,6 +33,12 @@ def current_software(Pm: PackageManagement):
     ])
 
     Pm.command("glava --copy-config", "Copying glava config")
+
+    # Minecraft
+    Pm.install_lst([
+        'prismlauncher-qt5-bin',
+        'prismlauncher-themes-git',
+    ])
 
 
 def flatpak(Pm: PackageManagement):

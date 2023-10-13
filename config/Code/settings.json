@@ -10,8 +10,6 @@
     "editor.minimap.side": "left",
     "editor.fontFamily": "'Maple Mono', 'monospace', monospace",
     "extensions.autoUpdate": false,
-    "terminal.external.linuxExec": "kitty",
-    "terminal.explorerKind": "both",
     "terminal.sourceControlRepositoriesKind": "both",
     "telemetry.telemetryLevel": "off",
     "git.openRepositoryInParentFolders": "always",
