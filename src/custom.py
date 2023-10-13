@@ -70,8 +70,7 @@ def global_themes(Pm: PackageManagement):
         'papirus-icon-theme',
     ])
     
-    # Install themes
-    Pm.command_with_enter('_prism-theme-installer', 'Specify the directory where you want to install themes')
+    Pm.command_with_enter("_prism-theme-installer")
 
     Pm.copy_file("config/.gtkrc-2.0", "~/.gtkrc-2.0", log_msg="Copying .gtkrc-2.0")
     Pm.copy_file("config/gtk-3.0/settings.ini", "~/.config/gtk-3.0/settings.ini", log_msg="Copying gtk-3.0 settings.ini")
