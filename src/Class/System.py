@@ -1,5 +1,4 @@
-from pexpect import spawn, ExceptionPexpect
-from subprocess import run, PIPE, CalledProcessError
+from subprocess import run, PIPE, CalledProcessError, Popen
 from os import remove, system, path
 from datetime import datetime
 
@@ -61,20 +60,31 @@ class System:
             self.__log_command(
                 f"Failed to copy {src} to {dst}: {str(e)}", error=True)
 
-    def command_with_enter(self, cmd: str, expected_text: str):
+    def command_with_enter(self, cmd: str):
         print(
-            f"\033[92m[+]\033[0m Executing {cmd} and waiting for {expected_text}")
+            f"\033[92m[+]\033[0m Executing {cmd} and simulating Enter key press")
         self.__log_command(cmd)
 
-        try:
-            child = spawn(cmd, timeout=10)  # NOTE: Adjust timeout as needed
-            child.expect(expected_text)
-            child.sendline('')
-            child.wait()
-            return child.before.decode()
-        except ExceptionPexpect as e:
+        process = Popen(
+            cmd,
+            shell=True,
+            stdin=PIPE,
+            stdout=PIPE,
+            stderr=PIPE,
+            text=True
+        )
+
+        # Simule l'appui sur la touche "Entrée"
+        process.stdin.write('\n')
+        process.stdin.flush()
+
+        # Capture la sortie et les erreurs éventuelles
+        stdout, stderr = process.communicate()
+
+        # Gère les erreurs éventuelles
+        if process.returncode != 0:
             self.__log_command(
-                f"Failed to execute {cmd} with enter: {str(e)}", error=True)
-        except Exception as e:
-            self.__log_command(
-                f"Failed to execute {cmd} with enter: {str(e)}", error=True)
+                f"Failed to execute {cmd} with enter: {stderr}", error=True)
+            return None
+
+        return stdout
