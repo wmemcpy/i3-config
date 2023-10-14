@@ -5,7 +5,6 @@ from src.Class.PackageManagement import PackageManagement
 def dev_software(Pm: PackageManagement):
     Pm.install_lst([
         'visual-studio-code-bin',
-        'vim',
         'gdb',
         'valgrind',
         'clang',
@@ -52,6 +51,5 @@ def flatpak(Pm: PackageManagement):
         'io.github.giantpinkrobots.flatsweep',
         'com.valvesoftware.Steam',
         'net.lutris.Lutris',
-        'com.heroicgameslauncher.hgl',
-        'org.kde.KStyle.Kvantum'
+        'com.heroicgameslauncher.hgl'
     ], flatpak=True)

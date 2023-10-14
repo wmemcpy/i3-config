@@ -47,6 +47,13 @@ def essential_build(Pm: PackageManagement) -> bool:
         'nitrogen',
         'fastfetch',
         'imagemagick',
+        'nwg-look',
+        'kvantum',
+        'qt5ct',
+        'thunar',
+        'pavucontrol',
+        'nwg-look',
+        'exa'
     ])
 
 
