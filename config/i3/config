@@ -65,8 +65,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Application launcher
-bindsym $mod+o exec --no-startup-id rofi -show run
-bindsym $mod+p exec --no-startup-id rofi -show drun
+bindsym $mod+o exec --no-startup-id rofi -combi-modi window,drun,ssh -font "hack 10" -show combi -icon-theme "Papirus" -show-icons
 bindsym $mod+x exec --no-startup-id rofi -show p -modi p:rofi-power-menu
 
 # Wallpaper manager

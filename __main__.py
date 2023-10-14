@@ -51,6 +51,8 @@ def main():
                    "Cloning paru")
         Pm.command("cd paru && makepkg -si --noconfirm && cd ..",
                    "Installing paru")
+        Pm.command("sudo sed -i '/#BottomUp/s/^#//' /etc/paru.conf",
+                     "Enabling BottomUp in /etc/paru.conf")
     else:
         Pm.command(
             "git clone https://aur.archlinux.org/yay-bin.git", "Cloning yay")
