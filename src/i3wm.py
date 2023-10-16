@@ -12,7 +12,8 @@ def install_i3wm(Pm: PackageManagement) -> bool:
         'kitty',
         'lightdm-gtk-greeter',
         'lightdm',
-        'rofi'
+        'rofi',
+        'rofi-power-menu-git'
     ])
 
 

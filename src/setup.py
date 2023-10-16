@@ -17,10 +17,15 @@ def pacman_conf(Pm: PackageManagement) -> None:
         lines = file.readlines()
 
     patterns = [
+        # Pacman options
         compile(r"#Color"),
         compile(r"#CheckSpace"),
         compile(r"#VerbosePkgLists"),
         compile(r"#ParallelDownloads = 5"),
+        
+        # Add multilib
+        compile(r"#\[multilib\]"),
+        compile(r"#Include = /etc/pacman.d/mirrorlist"),
     ]
 
     new_lines = []
