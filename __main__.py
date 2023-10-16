@@ -5,7 +5,7 @@ from src.setup import mirrorlist, pacman_conf
 from src.i3wm import install_i3wm, systemctl_config, essential_build, install_fonts
 from src.drivers import install_driver
 from src.software import dev_software, current_software, flatpak
-from src.custom import wallpapers, vscode, config, flatpak_themes
+from src.custom import wallpapers, vscode, config, flatpak_themes, global_themes
 from time import time
 from os import system
 
@@ -81,6 +81,7 @@ def main():
     vscode(Pm)
     config(Pm)
     flatpak_themes(Pm)
+    global_themes(Pm)
 
     end_time = time()
     elapsed_time = end_time - start_time

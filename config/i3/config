@@ -46,7 +46,7 @@ bindsym Print exec ~/.scripts/screenshot.sh
 bindsym $mod+Print exec ~/.scripts/screenshot.sh select
 
 # Applications shortcuts
-bindsym $mod+Shift+p exec pavucontrol
+bindsym $mod+Shift+p exec --no-startup-id pavucontrol
 bindsym $mod+c exec --no-startup-id code
 bindsym $mod+b exec --no-startup-id thunar
 
@@ -65,7 +65,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Application launcher
-bindsym $mod+o exec --no-startup-id rofi -combi-modi window,drun,ssh -font "hack 10" -show combi -icon-theme "Papirus" -show-icons
+bindsym $mod+o exec rofi -combi-modi window,drun,ssh -font "hack 10" -show combi -icon-theme "Papirus" -show-icons
 bindsym $mod+x exec --no-startup-id rofi -show p -modi p:rofi-power-menu
 
 # Wallpaper manager
