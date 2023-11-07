@@ -74,14 +74,11 @@ class System:
             text=True
         )
 
-        # Simule l'appui sur la touche "Entrée"
         process.stdin.write('\n')
         process.stdin.flush()
 
-        # Capture la sortie et les erreurs éventuelles
         stdout, stderr = process.communicate()
 
-        # Gère les erreurs éventuelles
         if process.returncode != 0:
             self.__log_command(
                 f"Failed to execute {cmd} with enter: {stderr}", error=True)
